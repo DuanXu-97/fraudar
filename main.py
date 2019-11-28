@@ -26,15 +26,8 @@ elif args.density_metric == 'AveDegree':
 else:
     raise Exception("Error Density Metric.")
 
-weighted_matrix = dm.get_weighted_matrix()
-weights = dm.get_weights()
-
-if args.node_sus_path is not None:
-    rowSusp = np.loadtxt("%s.rows" % (sys.argv[3],))
-    colSusp = np.loadtxt("%s.cols" % (sys.argv[3],))
-    lwRes = fraudar.run_fraudar(weighted_matrix, weights, (rowSusp, colSusp))
-else:
-    lwRes = fraudar.run_fraudar(weighted_matrix, weights)
+matrix = dm.get_matrix()
+lwRes = fraudar.run_fraudar(matrix, dm, numToDetect=10)
 
 print("result: ", lwRes)
 np.savetxt("%s.rows" % (args.output_path, ), np.array(list(lwRes[0][0])), fmt='%d')

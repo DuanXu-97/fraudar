@@ -7,7 +7,24 @@ def c2Score(M, rowSet, colSet, nodeSusp):
     return M[list(rowSet), :][:, list(colSet)].sum(axis=None) + suspTotal
 
 
-def run_fraudar(M, colWeights, nodeSusp=None):
+def run_fraudar(M, dm, numToDetect):
+    Mcur = M.copy().tolil()
+    res = []
+    for i in range(numToDetect):
+        colWeights = dm.get_weights()
+        weight_matrix = dm.get_weight_matrix()
+        ((rowSet, colSet), score) = GreedyDecreasing(weight_matrix, colWeights)
+        res.append(((rowSet, colSet), score))
+        (rs, cs) = Mcur.nonzero()
+        for i in range(len(rs)):
+            if rs[i] in rowSet and cs[i] in colSet:
+                Mcur[rs[i], cs[i]] = 0
+        dm.update_matrix(Mcur)
+        dm.update_weight_matrix()
+    return res
+
+
+def GreedyDecreasing(M, colWeights, nodeSusp=None):
     (m, n) = M.shape
     if nodeSusp is None:
         nodeSusp = (np.zeros(m), np.zeros(n))

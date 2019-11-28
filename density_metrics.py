@@ -7,17 +7,23 @@ class DensityMetric:
         self.matrix = matrix
         self.weights = None
         self.weighted_matrix = None
-        self.cpt_weighted_matrix()
+        self.update_weighted_matrix()
 
-    def cpt_weighted_matrix(self):
+    def update_weighted_matrix(self):
         self.weighted_matrix = self.matrix
         self.weights = [1] * self.matrix.shape[1]
+
+    def update_matrix(self, matrix):
+        self.matrix = matrix
 
     def get_weighted_matrix(self):
         return self.weighted_matrix
 
     def get_weights(self):
         return self.weights
+    
+    def get_matrix(self):
+        return self.matrix
 
 
 class SqrtWeightedAveDegree(DensityMetric):
@@ -25,7 +31,7 @@ class SqrtWeightedAveDegree(DensityMetric):
         self.c = c
         super(SqrtWeightedAveDegree, self).__init__(matrix=matrix)
 
-    def cpt_weighted_matrix(self):
+    def update_weighted_matrix(self):
         (m, n) = self.matrix.shape
         colSums = self.matrix.sum(axis=0)
         colWeights = 1.0 / np.sqrt(np.squeeze(colSums) + self.c)
@@ -40,7 +46,7 @@ class LogWeightedAveDegree(DensityMetric):
         self.c = c
         super(LogWeightedAveDegree, self).__init__(matrix=matrix)
 
-    def cpt_weighted_matrix(self):
+    def update_weighted_matrix(self):
         (m, n) = self.matrix.shape
         colSums = self.matrix.sum(axis=0)
         colWeights = np.squeeze(np.array(1.0 / np.log(np.squeeze(colSums) + self.c)))
