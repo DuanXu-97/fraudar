@@ -25,6 +25,8 @@ def run_fraudar(M, dm, numToDetect):
 
 # 686556, 85539
 def GreedyDecreasing(M, colWeights, userDeleNum, objDeleNum, nodeSusp=None):
+    print(userDeleNum)
+    print(objDeleNum)
     (m, n) = M.shape
     if nodeSusp is None:
         nodeSusp = (np.zeros(m), np.zeros(n))
