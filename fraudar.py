@@ -82,6 +82,7 @@ def GreedyDecreasing(M, colWeights, userDeleNum, objDeleNum, nodeSusp=None):
     finalRowSet = set(range(m))
     finalColSet = set(range(n))
 
+    print("bestNumDeleted: ", bestNumDeleted)
     # 由于已知欺诈用户和物体的数量，因此可以依次校正删除的节点数量
     for i in range(userDeleNum):
         if deleted[i][0] == 0:

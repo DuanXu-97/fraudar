@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="108c6920-51f0-441b-8c4a-a1793abc7298" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fraudar.py" afterPath="$PROJECT_DIR$/fraudar.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/out.cols" afterPath="$PROJECT_DIR$/out/out.cols" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/out.rows" afterPath="$PROJECT_DIR$/out/out.rows" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,8 +28,8 @@
       <file leaf-file-name="fraudar.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/fraudar.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="21" column="30" lean-forward="true" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+            <state relative-caret-position="349">
+              <caret line="84" column="30" lean-forward="false" selection-start-line="84" selection-start-column="30" selection-end-line="84" selection-end-column="30" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -330,8 +328,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/fraudar.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="21" column="30" lean-forward="true" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+        <state relative-caret-position="349">
+          <caret line="84" column="30" lean-forward="false" selection-start-line="84" selection-start-column="30" selection-end-line="84" selection-end-column="30" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
