@@ -12,7 +12,7 @@ def run_fraudar(M, dm, numToDetect):
     res = []
     for i in range(numToDetect):
         colWeights = dm.get_weights()
-        weight_matrix = dm.get_weight_matrix()
+        weight_matrix = dm.get_weighted_matrix()
         ((rowSet, colSet), score) = GreedyDecreasing(weight_matrix, colWeights)
         res.append(((rowSet, colSet), score))
         (rs, cs) = Mcur.nonzero()
@@ -20,7 +20,7 @@ def run_fraudar(M, dm, numToDetect):
             if rs[i] in rowSet and cs[i] in colSet:
                 Mcur[rs[i], cs[i]] = 0
         dm.update_matrix(Mcur)
-        dm.update_weight_matrix()
+        dm.update_weighted_matrix()
     return res
 
 
