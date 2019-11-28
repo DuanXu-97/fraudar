@@ -13,7 +13,7 @@ def run_fraudar(M, dm, numToDetect):
     for i in range(numToDetect):
         colWeights = dm.get_weights()
         weight_matrix = dm.get_weighted_matrix()
-        ((rowSet, colSet), score) = GreedyDecreasing(weight_matrix, colWeights, userDeleNum=684556//numToDetect+1, objDeleNum=85339//numToDetect+1)
+        ((rowSet, colSet), score) = GreedyDecreasing(weight_matrix, colWeights, userFraudNum=2000//numToDetect, objFraudNum=200//numToDetect)
         res.append(((rowSet, colSet), score))
         (rs, cs) = Mcur.nonzero()
         for i in range(len(rs)):
@@ -24,7 +24,7 @@ def run_fraudar(M, dm, numToDetect):
     return res
 
 # 686556, 85539
-def GreedyDecreasing(M, colWeights, userDeleNum, objDeleNum, nodeSusp=None):
+def GreedyDecreasing(M, colWeights, userFraudNum, objFraudNum, nodeSusp=None):
     print(userDeleNum)
     print(objDeleNum)
     (m, n) = M.shape
@@ -84,12 +84,17 @@ def GreedyDecreasing(M, colWeights, userDeleNum, objDeleNum, nodeSusp=None):
 
     print("bestNumDeleted: ", bestNumDeleted)
     # 由于已知欺诈用户和物体的数量，因此可以依次校正删除的节点数量
-    for i in range(userDeleNum):
+    i = 0
+    while len(finalRowSet) > userFraudNum:
         if deleted[i][0] == 0:
             finalRowSet.remove(deleted[i][1])
-    for i in range(objDeleNum):
+        i += 1
+
+    i = 0
+    while len(finalColSet) > objFraudNum:
         if deleted[i][0] == 1:
             finalColSet.remove(deleted[i][1])
+        i += 1
 
     # for i in range(bestNumDeleted):
     #     if deleted[i][0] == 0:
