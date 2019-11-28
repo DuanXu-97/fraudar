@@ -15,6 +15,7 @@ parser.add_argument('--node_sus_path', type=str, default=None, help="Path of nod
 args = parser.parse_args()
 
 M = ld.load_data(args.data_path)
+print("matrix shape: ", M.shape)
 
 if args.density_metric == 'LogWeightedAveDegree':
     dm = LogWeightedAveDegree(matrix=M, c=5)
